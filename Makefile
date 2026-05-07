@@ -69,7 +69,8 @@ test: unit integration ## Run all tests
 
 .PHONY: unit
 unit: ## Run unit tests
-	$(GO_TEST) -tags "$(BUILD_TAGS)" -v ./...
+	# Use -count=1 to disable test result caching
+	$(GO_TEST) -tags "$(BUILD_TAGS)" -v -count=1 ./...
 
 .PHONY: integration
 integration: ## Run integration tests
