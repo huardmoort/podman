@@ -79,7 +79,8 @@ integration: ## Run integration tests
 
 .PHONY: lint
 lint: ## Run linters
-	$(GOLANGCI_LINT) run --build-tags "$(BUILD_TAGS)"
+	# Using --timeout to avoid golangci-lint hanging indefinitely on slower machines
+	$(GOLANGCI_LINT) run --timeout 5m --build-tags "$(BUILD_TAGS)"
 
 .PHONY: fmt
 fmt: ## Format Go source files
